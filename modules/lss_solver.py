@@ -18,7 +18,7 @@ class LogSteadyStateSolver:
     def sampler(self, n_sample, domain=None):
         if domain is None:
             domain = self.domain
-        X = tf.random.uniform(shape=(n_sample, 2), minval=domain[0], maxval=domain[1], dtype=self.dtype)
+        X = tf.random.uniform(shape=(n_sample, self.dim), minval=domain[0], maxval=domain[1], dtype=self.dtype)
         return tf.split(X, self.dim, axis=1)
 
     def loss(self, *args):
