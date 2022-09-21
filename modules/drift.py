@@ -3,11 +3,11 @@ import tensorflow as tf
 # import jax.numpy as jnp
 
 
-def mu_np(X, b=0.208186):
+def mu_np(X, b=0.208186, s=1.):
     x, y, z = np.split(X, 3, axis=-1)
-    p = np.sin(y) - b*x 
-    q = np.sin(z) - b*y 
-    r = np.sin(x) - b*z
+    p = np.sin(s*y) - b*x 
+    q = np.sin(s*z) - b*y 
+    r = np.sin(s*x) - b*z
     return np.concatenate([p, q, r], axis=-1) 
 
 
